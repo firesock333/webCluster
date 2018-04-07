@@ -41,7 +41,8 @@ backend nodes
     http-request set-header X-Forwarded-Port %[dst_port]
     http-request add-header X-Forwarded-Proto https if { ssl_fc }
     option httpchk HEAD / HTTP/1.1\r\nHost:localhost
-    server web01 10.11.12.4 check
-    server web02 10.11.12.5 check
-    server web03 10.11.12.6 check
+    server web01 10.11.12.4:80 check
+    server web02 10.11.12.5:80 check
+    server web03 10.11.12.6:80 check
 EOF
+sudo /etc/init.d/haproxy restart
